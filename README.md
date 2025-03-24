@@ -1,105 +1,109 @@
-# TravelTruck
+# 🚐 TravelTrucks – Campervan Rental App
 
-TravelTruck is a React-based application designed for searching and booking campervans for travel enthusiasts. This project provides a seamless user experience with features like real-time form validation, toast notifications, and state management.
+TravelTrucks — це фронтенд-застосунок для оренди кемперів. Ви можете переглядати каталог автофургонів, фільтрувати їх за зручностями, переглядати деталі та відгуки, а також здійснити бронювання.
 
----
+## 🛠 Стек технологій
 
-## Features
+- **React + Vite**
+- **React Router DOM**
+- **Redux Toolkit + Redux Persist**
+- **Axios**
+- **SCSS Modules**
+- **Formik + Yup**
+- **react-hot-toast**
 
-- **Search and Booking**: Effortlessly find and book campervans for your adventures.
-- **Dynamic Form Validation**: Built with `Formik` and `Yup` for seamless input validation.
-- **Real-Time Feedback**: Displays toast notifications using `react-hot-toast` for success and error messages.
-- **Reusable Components**: Modular design for easy component reuse and customization.
-- **Modern UI**: Styled using SCSS with BEM methodology.
-- **Responsive Design**: Fully responsive form layout for various screen sizes.
-- **State Management**: Efficient state handling with Redux and Redux Persist.
-- **API Integration**: Axios used for fetching and managing data from external APIs.
+## 🔗 Live demo
 
----
+➡️ [https://your-project-url.vercel.app](https://your-project-url.vercel.app)
 
-## Technologies Used
+## 📦 Встановлення та запуск
 
-### Frontend
+> Переконайся, що встановлено **Node.js (версія LTS)**
 
-- **React**: Core library for building the user interface.
-- **React Router DOM**: For routing and navigation.
-- **React Helmet Async**: To manage document head.
-- **Formik**: Simplifies form state management.
-- **Yup**: Schema-based validation.
-- **react-hot-toast**: For toast notifications.
-- **Axios**: For making HTTP requests.
-- **SCSS**: Styling with modular and maintainable approach.
-- **Redux & Redux Persist**: State management and local storage persistence.
+### 1. Клонувати репозиторій
 
-### Additional Libraries
+```bash
+git clone https://github.com/MaRo-Christmas/TravelTrucks.git
+cd travel-trucks
+```
 
-- **clsx**: Utility for conditionally joining classNames.
-- **nanoid**: For unique ID generation.
-- **react-icons**: Pre-built icons for faster development.
-- **react-loading**: For loading spinners and indicators.
+## 2. Встановити залежності
 
----
+```bash
+npm install
+```
 
-## Installation
+## 3. Запустити у режимі розробки
 
-1. Clone the repository:
+```bash
+npm run dev
+```
 
-   ```bash
-   git clone https://github.com/Erpokk/Finalproject.git
-   ```
+## Основні сторінки
 
-2. Navigate to the project directory:
+- **Домашня сторінка**
 
-   ```bash
-   cd Finalproject
-   ```
+  - Містить банер із головним закликом до дії
+  - Кнопка “View Now” веде до каталогу
 
-3. Install dependencies:
+- **Сторінка каталогу**
 
-   ```bash
-   npm install
-   ```
+  - Відображає всі доступні транспортні засоби
+  - Реалізована фільтрація за:
+    - локацією (текстове поле)
+    - типом кузова (вибір одного)
+    - зручностями (вибір кількох)
+  - Кожну картку можна додати в обране
+  - Є кнопка “Load More” для довантаження
 
-4. Start the development server:
-
-   ```bash
-   npm start
-   ```
-
-5. Open your browser and visit:
-   ```
-   http://localhost:3000
-   ```
-
-## Contributing
-
-1. Fork the repository.
-2. Create a new branch:
-   ```bash
-   git checkout -b feature-name
-   ```
-3. Commit your changes:
-   ```bash
-   git commit -m "Add feature-name"
-   ```
-4. Push to the branch:
-   ```bash
-   git push origin feature-name
-   ```
-5. Open a pull request on GitHub.
+- **Сторінка окремого кемпера**
+  - Детальний опис кемпера
+  - Галерея фото
+  - Відгуки користувачів із рейтингами
+  - Форма бронювання з нотифікацією при успішній відправці
+  - Виведено технічні параметри:
+    - `transmission`, `engine`, `AC`, `bathroom`, `kitchen`, `TV`, `radio`, `refrigerator`, `microwave`, `gas`, `water`
+    - `form`, `length`, `width`, `height`, `tank`, `consumption`
 
 ---
 
-## License
+## Маршрутизація
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+- `/` — Домашня сторінка
+- `/catalog` — Сторінка каталогу
+- `/catalog/:id` — Сторінка конкретного кемпера
+- `*` — Сторінка 404 (Not Found)
 
 ---
 
-## Acknowledgements
+## Стан додатку
 
-- **Formik**: Simplifies React form handling.
-- **Yup**: Provides powerful schema validation.
-- **react-hot-toast**: Adds modern toast notifications.
-- **Axios**: For efficient API communication.
-- **SCSS**: Enables structured and modular CSS.
+- Реалізовано з використанням **Redux Toolkit**
+- Стан включає:
+  - Список транспортних засобів
+  - Стан фільтрів
+  - Список обраних (збережено через `redux-persist`)
+- Перед кожним фільтрованим запитом:
+  - Попередні результати скидаються
+  - Виводиться лише актуальний список згідно фільтрів
+
+---
+
+## Функціональні вимоги
+
+- 🔗 Кнопка “View Now” веде на `/catalog`
+- 📍 Фільтрація транспортних засобів:
+  - Локація (input)
+  - Тип кузова (1 вибір)
+  - Зручності (множинний вибір)
+- ❤️ Обране:
+  - Можна додавати/видаляти транспортні засоби
+  - Зберігається в `localStorage`
+- 💶 Ціна в UI: формат `€8000.00`
+- 🔎 Кнопка “Show more” відкриває сторінку кемпера в **новій вкладці**
+- 🔄 Кнопка “Load More” підвантажує наступну сторінку результатів
+- ⭐ Відгуки: п’ятизіркова шкала, текстові коментарі
+- 📝 Форма бронювання:
+  - Імʼя, email, дата, коментар
+  - Валідація (Formik + Yup)
+  - Нотифікація про успішну відправку (react-hot-toast)
