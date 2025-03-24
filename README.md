@@ -14,7 +14,7 @@ TravelTrucks — це фронтенд-застосунок для оренди 
 
 ## 🔗 Live demo
 
-➡️ [https://your-project-url.vercel.app](https://your-project-url.vercel.app)
+➡️ [https://travel-trucks-nine-beta.vercel.app](https://travel-trucks-nine-beta.vercel.app)
 
 ## 📦 Встановлення та запуск
 
